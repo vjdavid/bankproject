@@ -1,0 +1,21 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Main",
+            "request": "launch",
+            "mainClass": "BanCesun.Main",
+            "projectName": "src_c8d20b43"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Main",
+            "request": "launch",
+            "mainClass": "Main",
+            "projectName": "src_c8d20b43",
+            "classPaths": [
+                "/usr/lib/jvm/java-11-oracle"
+            ]
+        }
+    ]
+}
