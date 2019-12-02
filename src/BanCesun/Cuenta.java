@@ -90,8 +90,8 @@ public class Cuenta {
         String informacionDeCuenta = "Titular de la cuenta: " + getTitular() + "\n" +
         "Saldo: " + getSaldo() + "\n" +
         "Numero de cuenta: " + getNumeroCuenta() + "\n" +
-        "Direccion:  " + getDireccion() + "\n" +
-        "Edad: " + getEdad() + "años de edad \n" + 
+        "Direccion: " + getDireccion() + "\n" +
+        "Edad: " + getEdad() + " años de edad \n" + 
         "Fecha de Nacimiento: " + getFechaNacimiento() + "\n" +
         "Telefono: " + getTelefono() + "\n" +
         "Correo Electronico: " + getCorreo() + "\n" +
@@ -104,15 +104,19 @@ public class Cuenta {
     public static void consultarSaldo(String Titular) 
     {
         Cuenta cuentaConsultar = Banco.buscarCuentaPorTitular(Titular);
-        cuentaConsultar.getSaldo();
+
+        if (cuentaConsultar != null){
+            System.out.println(cuentaConsultar.getSaldo());
+        }
     }
     
     public static void depositarSaldo(String Titular, double Cantidad)
     {
         Cuenta cuentaDepositar = Banco.buscarCuentaPorTitular(Titular);
-        double saldoDeposito = cuentaDepositar.getSaldo() + Cantidad;
 
-        cuentaDepositar.setSaldo(saldoDeposito);
+        if (cuentaDepositar != null) {
+            cuentaDepositar.setSaldo(cuentaDepositar.getSaldo() + Cantidad);
+        }
     }
 
     public static void disposicionSaldo(String Titular, double Cantidad) 
@@ -120,9 +124,8 @@ public class Cuenta {
         Cuenta cuentaRetiro = Banco.buscarCuentaPorTitular(Titular);
 
         if ((cuentaRetiro != null && Cantidad <= cuentaRetiro.getSaldo()) && (Cantidad >= 100 && Cantidad <= 7500)) {
-            System.out.println("El saldo es de: " + cuentaRetiro.getSaldo());
-
             cuentaRetiro.setSaldo(cuentaRetiro.getSaldo() - Cantidad);
+            System.out.println("El saldo es de: " + cuentaRetiro.getSaldo());
         }
     }
 
