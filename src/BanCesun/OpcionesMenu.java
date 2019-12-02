@@ -23,10 +23,18 @@ public class OpcionesMenu {
 
       NombreBanco     = LeerString("Por favor introduzca el nombre del Banco: ");
       Titular         = LeerString("Por favor introduzca el titular de la cuenta: ");
-      Saldo           = LeerDouble("Por favor introduzca la cantidad de apertura: ");
+
+      do {
+        Saldo = LeerDouble("Por favor introduzca la cantidad de apertura: ");
+      } while (!montoMinimo(Saldo));
+
       NumeroCuenta    = LeerInt("Por favor introduzca la cuenta: ");
       Direccion       = LeerString("Por favor introduzca la direccion: ");
-      Edad            = LeerInt("Por favor introduzca la edad");
+
+      do {
+        Edad = LeerInt("Por favor introduzca la edad");
+      } while (!mayorDeEdad(Edad));
+
       FechaNacimiento = LeerString("Por favor introduzca la fecha de nacimiento");
       Telefono        = LeerString("Introduzca el numero de telefono: ");
       Correo          = LeerString("Introduzca el correo eletronico: ");
@@ -105,6 +113,17 @@ public class OpcionesMenu {
       Cantidad     = LeerDouble("Ingrese la cantidad a depositar: ");
       
       Cuenta.transaccionDeposito(Titular, Beneficiario, Cantidad);
+    }
+
+    //Validations
+    public static boolean mayorDeEdad(int Edad)
+    {
+        return Edad >= 18;
+    }
+    
+    public static boolean montoMinimo(double Monto)
+    {
+        return Monto >= 2500 && Monto <= 160000;
     }
     
     //Metodos para leer tipos de datos
