@@ -66,10 +66,38 @@ public class OpcionesMenu {
     
     public static void ActualizarCuenta()
     {
-      String CuentaActualizar;              
-      CuentaActualizar = LeerString("Por favor introduzca el titular de la cuenta a actualizar: ");
-              
-      Banco.actualizarCuenta(CuentaActualizar);
+      String NombreBanco, Titular, Direccion, FechaNacimiento, Telefono, Correo;
+      int NumeroCuenta, Edad;
+      double Saldo;
+      boolean Estado;
+      
+      Titular = LeerString("Ingrese el nombre de la cuenta del titular que desea acutalizar: ");                
+      Cuenta cuenta = Banco.buscarCuentaPorTitular(Titular);
+      
+      Titular = LeerString("Ingrese el nuevo titular, de lo contrario presione enter: ");
+      if (!Titular.isEmpty()){
+          cuenta.setTitular(Titular);
+      }
+      
+      Direccion = LeerString("Ingrese la nueva direccion, de lo contrario presione enter: ");
+      if (!Direccion.isEmpty()){
+          cuenta.setDireccion(Direccion);
+      }
+      
+      FechaNacimiento = LeerString("Ingrese la nueva fecha de nacimiento, de lo contrario presione enter: ");
+      if (!FechaNacimiento.isEmpty()){
+          cuenta.setFechaNacimiento(FechaNacimiento);
+      }
+      
+      Telefono = LeerString("Por favor introduzca el nuevo numero de telefono, de lo contrario presione enter: ");
+      if (!Telefono.isEmpty()){
+          cuenta.setTelefono(Telefono);
+      }
+      
+      Correo = LeerString("Por favor introduzca el nuevo correo, de lo contrario presione enter: ");
+      if (!Correo.isEmpty()){
+          cuenta.setCorreo(Correo);
+      }
     }
     
     //Menu CuentaHabiente
