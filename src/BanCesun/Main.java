@@ -16,9 +16,13 @@ public class Main extends OpcionesMenu {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {        
+    public static void main(String[] args) {    
         int opcion = 0;
         Scanner Leer = new Scanner(System.in);
+        
+        Banco.abrirCuenta("santander", "hugo", 200, 1, "av madero", 22, "23 de diciembre", "1234567", "hugo@gmail.com", true);
+        Banco.abrirCuenta("bancomer", "paco", 400, 2, "av camcion", 23, "24 de diciembre", "1234567", "pago@gmail.com", true);
+        Banco.abrirCuenta("scotia", "luis", 600, 3, "jeje", 24, "25 de diciembre", "1234567", "luis@gmail.com", true);
         
         do {
           System.out.println("-- Login --");
@@ -141,6 +145,9 @@ public class Main extends OpcionesMenu {
               break;
             case 4:
               DepositoABeneficiario();
+              break;
+            case 5:
+              Banco.consultarCuentas();            
               break;
             case 7:
               break;
