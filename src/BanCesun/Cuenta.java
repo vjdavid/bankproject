@@ -63,55 +63,42 @@ public class Cuenta {
     //tested method
     public static void clientesEnSaldoCero()
     {
-        //ArrayList<String> listadoClientes = new ArrayList<String>();
-
-        System.out.println("Cuentas en Cero");
         cuentas.keySet().forEach((cliente) -> {
             if(cliente.getSaldo() == 0 ) {
                 System.out.println(cliente.getInfo());
             }
         });
-        System.out.println("Fin de cuentas en cero");
-        
-
-        //return listadoClientes;
     }
 
     //tested method
     public static void clientesConDireccionCentro()
     {
-        //ArrayList<String> listadoClientes = new ArrayList<String>();
-
-        System.out.println("Clientes con direccion centro");
         cuentas.keySet().forEach((cliente) -> {
             if ("Centro".equals(cliente.getDireccion())) {
                 System.out.println(cliente.getInfo());
-                //listadoClientes.add(cliente.toString() + " \n");
             }
         });
-        
-        System.out.println("Fin clientes con direccion centro");
-
-        //return listadoClientes;
     }
     
     public static void ClienteConMayorSaldo()
     {
         Cuenta cuenta = Collections.max(Cuenta.cuentas.keySet(), Comparator.comparing(c -> c.getSaldo()));
-        cuenta.getInfo();
+        if(cuenta != null){
+            System.out.println(cuenta.getInfo());
+        }
     }
     
     //tested method
     public String getInfo(){
-        String informacionDeCuenta = "El titular de la cuenta es: " + getTitular() + "\n" +
-        "La cuenta tiene un saldo de " + getSaldo() + "\n" +
-        "La cuenta tiene el numero de cuenta " + getNumeroCuenta() + "\n" +
-        "La cuenta tiene la direccion de  " + getDireccion() + "\n" +
-        "El titular de la cuetna tiene la edad de " + getEdad() + "años de edad \n" + 
-        "La titular tiene la fecha de nacimiento " + getFechaNacimiento() + "\n" +
-        "El titular tiene el telefono " + getTelefono() + "\n" +
-        "El titular tiene el correo " + getCorreo() + "\n" +
-        "La cuenta tiene un estado de " + getEstado() + "\n" + 
+        String informacionDeCuenta = "Titular de la cuenta: " + getTitular() + "\n" +
+        "Saldo: " + getSaldo() + "\n" +
+        "Numero de cuenta: " + getNumeroCuenta() + "\n" +
+        "Direccion:  " + getDireccion() + "\n" +
+        "Edad: " + getEdad() + "años de edad \n" + 
+        "Fecha de Nacimiento: " + getFechaNacimiento() + "\n" +
+        "Telefono: " + getTelefono() + "\n" +
+        "Correo Electronico: " + getCorreo() + "\n" +
+        "La cuenta esta: " + getEstado() + "\n" + 
         "\n";
         
         return informacionDeCuenta;
@@ -136,7 +123,7 @@ public class Cuenta {
         Cuenta cuentaRetiro = Banco.buscarCuentaPorTitular(Titular);
 
         if ((cuentaRetiro != null && Cantidad <= cuentaRetiro.getSaldo()) && (Cantidad >= 100 && Cantidad <= 7500)) {
-            System.out.println("Su saldo es de: " + cuentaRetiro.getSaldo());
+            System.out.println("El saldo es de: " + cuentaRetiro.getSaldo());
 
             cuentaRetiro.setSaldo(cuentaRetiro.getSaldo() - Cantidad);
         }
