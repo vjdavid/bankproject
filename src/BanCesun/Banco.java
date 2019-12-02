@@ -88,20 +88,15 @@ public class Banco {
     //tested method
     public static void borrarCuentas()
     {
-        System.out.println("Las cuentas se borraron con exito");
         Cuenta.cuentas.clear();
+        System.out.println("Las cuentas se borraron con exito");
     }
 
     //tested method
     public static void consultarCuentas() 
     {
-        //ArrayList<String> listadoCuentas = new ArrayList<String>();
-
         Cuenta.cuentas.keySet().forEach((cuenta) -> {
             System.out.println(cuenta.getInfo());
-            //listadoCuentas.add();
         });
-
-        //return listadoCuentas;
     }
 }
