@@ -34,32 +34,6 @@ public class Cuenta {
         this.Estado = Estado;
     }
 
-    //Validations
-    public boolean esMayorDeEdad()
-    {
-        return (getEdad()) >= 18;
-    }
-    
-    public boolean montoMinimo()
-    {
-        return getSaldo() >= 25000 && getSaldo() <= 500000;
-    }
-    
-    public boolean limiteCuenta()
-    {
-        return getSaldo() <= 500000;
-    }
-    
-    public boolean limiteDisposicion(int Disposicion)
-    {
-        return Disposicion < getSaldo();  
-    }
-    
-    public boolean restriccionDisposicion(int Disposicion) 
-    {
-        return Disposicion <= 100 && Disposicion >= 7500;
-    }
-
     public static void clientesEnSaldoCero()
     {
         cuentas.keySet().forEach((cliente) -> {
@@ -114,8 +88,16 @@ public class Cuenta {
     {
         Cuenta cuentaDepositar = Banco.buscarCuentaPorTitular(Titular);
 
-        if (cuentaDepositar != null) {
-            cuentaDepositar.setSaldo(cuentaDepositar.getSaldo() + Cantidad);
+        if (cuentaDepositar != null){
+            double saldoDepositar = cuentaDepositar.getSaldo() + Cantidad;
+
+            if (saldoDepositar <= 500000){
+                cuentaDepositar.setSaldo(saldoDepositar);
+            } else {
+                System.out.println("La cuenta ha superado el limite de saldo");
+            }
+        } else {
+            System.out.println("La cuenta no existe");
         }
     }
 
@@ -124,8 +106,11 @@ public class Cuenta {
         Cuenta cuentaRetiro = Banco.buscarCuentaPorTitular(Titular);
 
         if ((cuentaRetiro != null && Cantidad <= cuentaRetiro.getSaldo()) && (Cantidad >= 100 && Cantidad <= 7500)) {
+            System.out.println("Su saldo actual es de: " + cuentaRetiro.getSaldo());
             cuentaRetiro.setSaldo(cuentaRetiro.getSaldo() - Cantidad);
-            System.out.println("El saldo es de: " + cuentaRetiro.getSaldo());
+            System.out.println("Su nuevo saldo es de: " + cuentaRetiro.getSaldo());
+        } else {
+            System.out.println("Operacion no permitida");
         }
     }
 
