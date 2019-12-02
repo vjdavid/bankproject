@@ -60,7 +60,6 @@ public class Cuenta {
         return Disposicion <= 100 && Disposicion >= 7500;
     }
 
-    //tested method
     public static void clientesEnSaldoCero()
     {
         cuentas.keySet().forEach((cliente) -> {
@@ -70,7 +69,6 @@ public class Cuenta {
         });
     }
 
-    //tested method
     public static void clientesConDireccionCentro()
     {
         cuentas.keySet().forEach((cliente) -> {
@@ -88,7 +86,6 @@ public class Cuenta {
         }
     }
     
-    //tested method
     public String getInfo(){
         String informacionDeCuenta = "Titular de la cuenta: " + getTitular() + "\n" +
         "Saldo: " + getSaldo() + "\n" +
