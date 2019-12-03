@@ -57,7 +57,6 @@ public class Banco {
         Cuenta.cuentas.remove(cuentaEliminar);
     }
     
-    //tested method
     public static Cuenta buscarCuentaPorTitular(String Titular)
     {                
         Cuenta cuentaEncontrada = null;
@@ -71,28 +70,12 @@ public class Banco {
         return cuentaEncontrada;
     }
     
-    public static void actualizarCuenta(String Titular)
-    {
-        Cuenta cuentaEncontrada = buscarCuentaPorTitular(Titular);
-        cuentaEncontrada.setTitular("");
-        cuentaEncontrada.setSaldo(300);
-        cuentaEncontrada.setNumeroCuenta(900);
-        cuentaEncontrada.setDireccion("");
-        cuentaEncontrada.setEdad(40);
-        cuentaEncontrada.setFechaNacimiento("");
-        cuentaEncontrada.setTelefono("9000");
-        cuentaEncontrada.setCorreo("vjdavid621@gmail.com");
-        cuentaEncontrada.setEstado(true);
-    }
-    
-    //tested method
     public static void borrarCuentas()
     {
         Cuenta.cuentas.clear();
         System.out.println("Las cuentas se borraron con exito");
     }
 
-    //tested method
     public static void consultarCuentas() 
     {
         Cuenta.cuentas.keySet().forEach((cuenta) -> {
